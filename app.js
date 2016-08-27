@@ -12,12 +12,14 @@ var express = require('express'),
     service = require('./services/service'),
     expressSession = require('express-session'),
     LocalStrategy = require('passport-local').Strategy,
-    User = require('./models/user'),
+    _User = require('./models/user'),
+    _History = require('./models/history'),
     multiparty = require('connect-multiparty'),
     multipartyMiddleware = multiparty(),
     fs = require('fs');
 
 var routes = require('./routes/index'),
+    routes_history = require('./routes/history'),
     app = express();
 
 // Configuration
@@ -37,9 +39,9 @@ app.use(require('express-session')({
 
 app.use(passport.initialize());
 app.use(passport.session());
-passport.use(new LocalStrategy(User.authenticate()));
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
+passport.use(new LocalStrategy(_User.authenticate()));
+passport.serializeUser(_User.serializeUser());
+passport.deserializeUser(_User.deserializeUser());
 
 // Definitions
 app.engine('html', swig.renderFile);
@@ -49,17 +51,23 @@ app.set('view cache', true);
 swig.setDefaults({ cache: false });
 
 app.use('/', routes);
+app.use('/history', service.isAutenticate, routes_history);
 
 app.post('/import', service.isAutenticate, multipartyMiddleware, function(req, res, next) {
   fs.readFile(req.files.file.path, function(err, data) {
     if(err){
       res.send(false);
     }else{
-      var newPath = __dirname + '/uploads/' + req.user._id + req.files.file.name;
+      var newPath = __dirname + '/uploads/' + new Date().getTime() + '_' + req.user._id + '_' + req.files.file.name;
       fs.writeFile(newPath, data, function(err) {
         if(err){
           res.send(false);
         }else{
+          var history = new _History();
+          history.userId = req.user._id;
+          history.dateCreate = new Date();
+          history.name = req.files.file.name;
+          history.save()
           res.send(true);
         }
       });

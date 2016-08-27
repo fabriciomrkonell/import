@@ -14,6 +14,14 @@ router.get('/', service.isAutenticate, function(req, res, next) {
   });
 });
 
+router.get('/historico', service.isAutenticate, function(req, res, next) {
+  res.render('layouts/default', {
+    title: 'Histórico',
+    page: '../history.html',
+    requiresJS: ['app/controllers/history']
+  });
+});
+
 router.get('/login', function(req, res, next) {
   res.render('layouts/login', {
   	title: 'Login'

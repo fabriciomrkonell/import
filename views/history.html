@@ -1,0 +1,20 @@
+<div ng-controller="historyCtrl">
+  <div class="row">
+    <div class="col-sm-12">
+      <table class="table table-bordered table-condensed">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th width="160px" class="text-center">Data</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="h in histories">
+            <td>[[h.name]]</td>
+            <td width="160px" class="text-center">[[h.dateCreate | date:'HH:mm:ss dd/MM/yyyy']]</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
