@@ -4,13 +4,15 @@ var express = require('express'),
 		router = express.Router(),
 		passport = require('passport'),
 		User = require('../models/user'),
-		service = require('../services/service');
+		service = require('../services/service'),
+    simpleTableList = require('../services/simpleTable');
 
 router.get('/', service.isAutenticate, function(req, res, next) {
   res.render('layouts/default', {
   	title: 'Início',
-  	page: '../inicio.html',
-  	requiresJS: ['app/controllers/inicio']
+  	page: '../index.html',
+  	requiresJS: ['app/controllers/index'],
+    simpleTableList: simpleTableList
   });
 });
 
@@ -19,6 +21,23 @@ router.get('/historico', service.isAutenticate, function(req, res, next) {
     title: 'Histórico',
     page: '../history.html',
     requiresJS: ['app/controllers/history']
+  });
+});
+
+router.get('/tabela-simples', service.isAutenticate, function(req, res, next) {
+  res.render('layouts/default', {
+    title: 'Tabela Simples',
+    page: '../simpleTable.html',
+    requiresJS: [],
+    simpleTableList: simpleTableList
+  });
+});
+
+router.get('/configuracao', service.isAutenticate, function(req, res, next) {
+  res.render('layouts/default', {
+    title: 'Configuração',
+    page: '../configuration.html',
+    requiresJS: ['app/controllers/configuration']
   });
 });
 

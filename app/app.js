@@ -12,6 +12,12 @@ angular.module('Import').run(['$rootScope', '$timeout', function($rootScope, $ti
 		$rootScope.message = message;
 	};
 
+	$rootScope.timeoutMessage = function(){
+		$timeout(function(){
+  		$rootScope.setMessage(undefined);
+  	}, 2000);
+	};
+
 }]);
 
 angular.module('Import').config(['$interpolateProvider', function($interpolateProvider){

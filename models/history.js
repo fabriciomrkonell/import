@@ -5,6 +5,7 @@ var mongoose = require('mongoose'),
 
 var _History = new Schema({
 	name: String,
+	aliquot: String,
   dateCreate: Date,
   userId: { type: Schema.Types.ObjectId, ref: 'User' }
 });

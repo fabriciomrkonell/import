@@ -5,13 +5,17 @@
         <thead>
           <tr>
             <th>Nome</th>
+            <th width="80px" class="text-center">Alíquota</th>
             <th width="160px" class="text-center">Data</th>
+            <th width="80px" class="text-center">Ações</th>
           </tr>
         </thead>
         <tbody>
           <tr ng-repeat="h in histories">
             <td>[[h.name]]</td>
+            <td width="80px" class="text-center">[[h.aliquot]]%</td>
             <td width="160px" class="text-center">[[h.dateCreate | date:'HH:mm:ss dd/MM/yyyy']]</td>
+            <td width="80px" class="text-center"></td>
           </tr>
         </tbody>
       </table>

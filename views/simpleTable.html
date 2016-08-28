@@ -1,0 +1,34 @@
+<div>
+  <div class="row">
+    <div class="col-sm-12">
+      <table class="table table-bordered table-condensed">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th width="70px" class="text-center">Alíquota</th>
+            <th width="70px" class="text-center">IRPJ</th>
+            <th width="70px" class="text-center">CSLL</th>
+            <th width="70px" class="text-center">Cofins</th>
+            <th width="70px" class="text-center">PIS</th>
+            <th width="70px" class="text-center">CPP</th>
+            <th width="70px" class="text-center">ICMS</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for st in simpleTableList %}
+            <tr>
+              <td>{{st.description}}</td>
+              <td width="70px" class="text-center">{{st.aliquot}}%</td>
+              <td width="70px" class="text-center">{{st.irpj}}%</td>
+              <td width="70px" class="text-center">{{st.csll}}%</td>
+              <td width="70px" class="text-center">{{st.cofins}}%</td>
+              <td width="70px" class="text-center">{{st.pis}}%</td>
+              <td width="70px" class="text-center">{{st.cpp}}%</td>
+              <td width="70px" class="text-center">{{st.icms}}%</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

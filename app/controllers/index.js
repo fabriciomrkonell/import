@@ -4,22 +4,21 @@
 
 	angular.module('Import.controllers').controller('inicioCtrl', indexCtrl);
 
-	indexCtrl.$inject = ['$scope', 'Upload', '$rootScope', '$timeout'];
+	indexCtrl.$inject = ['$scope', 'Upload', '$rootScope'];
 
-	function indexCtrl($scope, Upload, $rootScope, $timeout) {
+	function indexCtrl($scope, Upload, $rootScope) {
 
 		$scope.file = undefined;
+		$scope.aliquot = '4';
 
 		$scope.upload = function(file){
 			$rootScope.setMessage('Enviando arquivo...');
 	    Upload.upload({
         url: '/import',
-        data: { file: file }
+        data: { file: file, aliquot: $scope.aliquot }
 	    }).then(function (resp) {
 	    	$rootScope.setMessage('Arquivo enviado com sucesso.');
-	    	$timeout(function(){
-	    		$rootScope.setMessage(undefined);
-	    	}, 2000)
+	    	$rootScope.timeoutMessage();
 	      console.log('Success ' + resp.config.data.file.name + 'uploaded. Response: ' + resp.data);
 	    }, function (resp) {
 	      console.log('Error status: ' + resp.status);

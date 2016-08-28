@@ -1,0 +1,35 @@
+<link rel="stylesheet" type="text/css" href="app/dist/css/inicio.css">
+<div ng-controller="inicioCtrl">
+  <div class="row">
+    <div class="col-sm-12">
+      <form class="form-inline">
+        <div class="form-group">
+          <label class="control-label">Alíquota: &nbsp;</label>
+          <select class="form-control" ng-model="aliquot">
+            {% for st in simpleTableList %}
+              <option value="{{st.aliquot}}">{{st.aliquot}}%</option>
+            {% endfor %}
+          </select>
+        </div>
+        <br/ class="hidden-xs">
+        <br/ class="hidden-xs">
+        <div class="form-group">
+          <label class="control-label">Arquivo: &nbsp;</label>
+          <input type="file" class="form-control" ngf-select ng-model="file" name="file" ngf-max-size="20MB" ngf-pattern="'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'" ngf-accept="'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'" />
+        </div>
+        <br/ class="hidden-xs">
+        <br/ class="hidden-xs">
+        <div class="form-group">
+          <button type="button" class="btn btn-success" ng-click="upload(file)" ng-disabled="file === undefined">Analisar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!--
+	<div id="footer">
+    <div class="text-center">
+      <p class="muted credit"><a target="_blank" href="http://inmei.org">inmei.org</a></p>
+    </div>
+  </div>
+  -->
+</div>

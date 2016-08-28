@@ -7,7 +7,11 @@ var mongoose = require('mongoose'),
 var User = new Schema({
 	name: String,
  	username: String,
-  password: String
+  password: String,
+  isAdmin: Boolean,
+  configuration: {
+		ncm: { type: Number, default: 0 }
+	}
 });
 
 User.plugin(passportLocalMongoose);

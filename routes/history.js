@@ -7,7 +7,7 @@ var express = require('express'),
 router.get('/', function(req, res, next) {
   _History.find({
     userId: req.user._id
-  }, function(err, histories) {
+  }).sort('-dateCreate').limit(10).exec(function(err, histories) {
     res.send({ error: 0, data: histories });
   });
 });

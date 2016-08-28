@@ -20,6 +20,7 @@ var express = require('express'),
 
 var routes = require('./routes/index'),
     routes_history = require('./routes/history'),
+    routes_configuration = require('./routes/configuration'),
     app = express();
 
 // Configuration
@@ -52,6 +53,7 @@ swig.setDefaults({ cache: false });
 
 app.use('/', routes);
 app.use('/history', service.isAutenticate, routes_history);
+app.use('/configuration', service.isAutenticate, routes_configuration);
 
 app.post('/import', service.isAutenticate, multipartyMiddleware, function(req, res, next) {
   fs.readFile(req.files.file.path, function(err, data) {
@@ -65,6 +67,7 @@ app.post('/import', service.isAutenticate, multipartyMiddleware, function(req, r
         }else{
           var history = new _History();
           history.userId = req.user._id;
+          history.aliquot = req.body.aliquot;
           history.dateCreate = new Date();
           history.name = req.files.file.name;
           history.save()
