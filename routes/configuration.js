@@ -4,7 +4,7 @@ var express = require('express'),
 		router = express.Router();
 
 router.post('/', function(req, res, next) {
-	req.user.configuration.ncm = req.body.ncm;
+	req.user.configuration = req.body;
   req.user.save(function(err){
     if(err){
       res.send({ error: 1, message: err.errors });

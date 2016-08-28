@@ -21,6 +21,6 @@
     "swig": "1.4.2",
     "compression": "1.6.2",
     "connect-multiparty": "2.0.0",
-    "excel-to-json": "1.0.0"
+    "node-xlsx": "0.7.2"
   }
 }

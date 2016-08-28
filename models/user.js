@@ -10,7 +10,15 @@ var User = new Schema({
   password: String,
   isAdmin: Boolean,
   configuration: {
-		ncm: { type: Number, default: 0 }
+		start: { type: Number, default: 1 },
+		number: { type: Number, default: 0 },
+		description: { type: Number, default: 0 },
+		amount: { type: Number, default: 0 },
+		ncm: { type: Number, default: 0 },
+		cofins: { type: Number, default: 0 },
+		pis: { type: Number, default: 0 },
+		cest: { type: Number, default: 0 },
+		icms: { type: Number, default: 0 }
 	}
 });
 

@@ -10,6 +10,7 @@ var express = require('express'),
     mongoose = require('./config/database'),
    	passport = require('passport'),
     service = require('./services/service'),
+    process = require('./services/process'),
     expressSession = require('express-session'),
     LocalStrategy = require('passport-local').Strategy,
     _User = require('./models/user'),
@@ -70,7 +71,8 @@ app.post('/import', service.isAutenticate, multipartyMiddleware, function(req, r
           history.aliquot = req.body.aliquot;
           history.dateCreate = new Date();
           history.name = req.files.file.name;
-          history.save()
+          history.save();
+          process.start(req.files.file, req.user.configuration);
           res.send(true);
         }
       });
