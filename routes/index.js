@@ -44,7 +44,6 @@ router.get('/configuracao', service.isAutenticate, function(req, res, next) {
 
 router.get('/processo/:id', service.isAutenticate, function(req, res, next) {
   Process.findById(req.param('id'), function(err, process){
-    console.log(process);
     res.render('layouts/defaultProcess', {
       process: process
     });
