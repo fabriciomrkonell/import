@@ -7,6 +7,7 @@ var _History = new Schema({
 	name: String,
 	aliquot: String,
   dateCreate: Date,
+  processId: { type: Schema.Types.ObjectId, ref: 'Process' },
   userId: { type: Schema.Types.ObjectId, ref: 'User' }
 });
 

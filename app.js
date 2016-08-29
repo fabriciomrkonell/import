@@ -72,8 +72,7 @@ app.post('/import', service.isAutenticate, multipartyMiddleware, function(req, r
           history.dateCreate = new Date();
           history.name = req.files.file.name;
           history.save();
-          process.start(req.files.file, req.user.configuration);
-          res.send(true);
+          process.start(req.files.file, req.user.configuration, history, res);
         }
       });
     }

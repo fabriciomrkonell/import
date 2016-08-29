@@ -4,6 +4,7 @@ var express = require('express'),
 		router = express.Router(),
 		passport = require('passport'),
 		User = require('../models/user'),
+    Process = require('../models/process'),
 		service = require('../services/service'),
     simpleTableList = require('../services/simpleTable');
 
@@ -39,6 +40,15 @@ router.get('/configuracao', service.isAutenticate, function(req, res, next) {
     page: '../configuration.html',
     requiresJS: ['app/controllers/configuration']
   });
+});
+
+router.get('/processo/:id', service.isAutenticate, function(req, res, next) {
+  Process.findById(req.param('id'), function(err, process){
+    console.log(process);
+    res.render('layouts/defaultProcess', {
+      process: process
+    });
+  })
 });
 
 router.get('/login', function(req, res, next) {
