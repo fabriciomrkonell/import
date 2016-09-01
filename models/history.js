@@ -6,6 +6,7 @@ var mongoose = require('mongoose'),
 var _History = new Schema({
 	name: String,
 	aliquot: String,
+	importation: String, // 0 - Normal / 1 - NCM
   dateCreate: Date,
   processId: { type: Schema.Types.ObjectId, ref: 'Process' },
   userId: { type: Schema.Types.ObjectId, ref: 'User' }

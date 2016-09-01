@@ -54,6 +54,7 @@
         <table class="table table-bordered table-condensed">
           <thead>
             <tr>
+              <th width="100px" class="text-center">Número</th>
               <th>Descrição</th>
               <th width="100px" class="text-center">Valor total</th>
             </tr>
@@ -61,6 +62,7 @@
           <tbody>
             {% for pr in process.itens %}
               <tr>
+                <td width="100px" class="text-center">{{pr.number}}</td>
                 <td>{{pr.description}}</td>
                 <td width="100px" class="text-center">R$ {{pr.value}}</td>
               </tr>

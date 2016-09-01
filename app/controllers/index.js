@@ -12,12 +12,13 @@
 
 		$scope.file = undefined;
 		$scope.aliquot = '4';
+		$scope.importation = '0';
 
 		$scope.upload = function(file){
 			$rootScope.setMessage('Enviando arquivo...');
 	    Upload.upload({
         url: '/import',
-        data: { file: file, aliquot: $scope.aliquot }
+        data: { file: file, aliquot: $scope.aliquot, importation: $scope.importation }
 	    }).then(function (resp) {
 	    	$rootScope.setMessage('Arquivo enviado com sucesso.');
 	    	$rootScope.timeoutMessage();

@@ -1,15 +1,9 @@
-.container-view{
-	margin-top: 15px;
-}
-
-img {
-	width: 300px;
-}
-
-.number-info {
-	font-size: 30px;
-}
-
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
   display: none !important;
+}
+
+@media only screen and (min-width:768px){
+  .input-description{
+		width: 600px !important;
+	}
 }

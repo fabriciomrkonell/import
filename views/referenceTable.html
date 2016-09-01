@@ -1,0 +1,48 @@
+<link rel="stylesheet" type="text/css" href="app/dist/css/reference.css">
+<div ng-controller="referenceCtrl">
+  <div class="row">
+    <div class="col-sm-12">
+      <form class="form-inline">
+        <div class="form-group">
+          <label class="control-label">NCM: &nbsp;</label>
+          <input type="text" class="form-control" ng-model="ncm" placeholder="NCM" />
+        </div>
+        <br/ class="hidden-xs">
+        <br/ class="hidden-xs">
+        <div class="form-group">
+          <label class="control-label">Descrição: &nbsp;</label>
+          <input type="text" class="form-control input-description" ng-model="description" placeholder="Descrição" />
+        </div>
+        <br/ class="hidden-xs">
+        <br/ class="hidden-xs">
+        <div class="form-group">
+          <button type="button" class="btn btn-success" ng-click="save()" ng-disabled="!isValid()">Salvar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  {{references}}
+  <br/ class="hidden-xs">
+  <div class="row">
+	  <div class="col-sm-12">
+	    <table class="table table-bordered table-condensed">
+	      <thead>
+	        <tr>
+	          <th width="150px" class="text-center">NCM</th>
+	          <th>Descrição</th>
+	          <th width="100px" class="text-center">Ações</th>
+	        </tr>
+	      </thead>
+	      <tbody>
+          <tr ng-repeat="ref in references">
+            <td width="150px" class="text-center">[[ref.ncm]]</td>
+            <td>[[ref.description]]</td>
+            <td width="100px" class="text-center">
+            	<button type="button" class="btn btn-danger btn-xs" ng-click="remove(ref._id)">Excluir</button>
+            </td>
+          </tr>
+	      </tbody>
+	    </table>
+	  </div>
+	</div>
+</div>

@@ -4,6 +4,15 @@
     <div class="col-sm-12">
       <form class="form-inline">
         <div class="form-group">
+          <label class="control-label">Importação: &nbsp;</label>
+          <select class="form-control" ng-model="importation">
+            <option value="0">Normal</option>
+            <option value="1">Somente NCM</option>
+          </select>
+        </div>
+        <br/ class="hidden-xs">
+        <br/ class="hidden-xs">
+        <div class="form-group">
           <label class="control-label">Alíquota: &nbsp;</label>
           <select class="form-control" ng-model="aliquot">
             {% for st in simpleTableList %}
@@ -25,11 +34,4 @@
       </form>
     </div>
   </div>
-  <!--
-	<div id="footer">
-    <div class="text-center">
-      <p class="muted credit"><a target="_blank" href="http://inmei.org">inmei.org</a></p>
-    </div>
-  </div>
-  -->
 </div>

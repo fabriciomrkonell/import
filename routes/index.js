@@ -34,6 +34,14 @@ router.get('/tabela-simples', service.isAutenticate, function(req, res, next) {
   });
 });
 
+router.get('/tabela-referencia', service.isAutenticate, function(req, res, next) {
+  res.render('layouts/default', {
+    title: 'Tabela Referência',
+    page: '../referenceTable.html',
+    requiresJS: ['app/controllers/reference']
+  });
+});
+
 router.get('/configuracao', service.isAutenticate, function(req, res, next) {
   res.render('layouts/default', {
     title: 'Configuração',

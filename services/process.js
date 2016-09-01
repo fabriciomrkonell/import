@@ -20,7 +20,8 @@ module.exports = {
 
 		const data = excelParser.parse(file.path)[0].data,
 					aliquotReference = this.getAliquot(history.aliquot),
-					pis_cofins = 4;
+					pis_cofins_four = 4, pis_cofins_five = 5,
+					importation_normal = 0, importation_ncm = 1;
 
 		var dataPisCofins = [], amountPisCofins = 0, itensPisCofins = [], me = this;
 
@@ -28,7 +29,11 @@ module.exports = {
 			if(key < (config.start - 1)) return false;
 
 			//Verify Pis/Cofins
-			if((parseInt(item[config.pis - 1]) === pis_cofins) && (parseInt(item[config.cofins - 1]) === pis_cofins)){
+			var verifyPisCofinsFour = (parseInt(item[config.pis - 1]) === pis_cofins_four) && (parseInt(item[config.cofins - 1]) === pis_cofins_four);
+			var verifyPisCofinsFive = (parseInt(item[config.pis - 1]) === pis_cofins_five) && (parseInt(item[config.cofins - 1]) === pis_cofins_five);
+			var importation = parseInt(history.importation);
+
+			if(((verifyPisCofinsFour || verifyPisCofinsFive) && importation === importation_normal) || (importation === importation_ncm)){
 
 				//Push
 				dataPisCofins.push(item);
@@ -38,6 +43,7 @@ module.exports = {
 
 				//Itens
 				itensPisCofins.push({
+					number: item[config.number - 1],
 					description: item[config.description - 1],
 					value: me.convertToMoney(item[config.amount - 1])
 				});
