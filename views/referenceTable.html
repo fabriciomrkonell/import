@@ -21,7 +21,6 @@
       </form>
     </div>
   </div>
-  {{references}}
   <br/ class="hidden-xs">
   <div class="row">
 	  <div class="col-sm-12">
@@ -30,14 +29,15 @@
 	        <tr>
 	          <th width="150px" class="text-center">NCM</th>
 	          <th>Descrição</th>
-	          <th width="100px" class="text-center">Ações</th>
+	          <th width="140px" class="text-center">Ações</th>
 	        </tr>
 	      </thead>
 	      <tbody>
           <tr ng-repeat="ref in references">
             <td width="150px" class="text-center">[[ref.ncm]]</td>
             <td>[[ref.description]]</td>
-            <td width="100px" class="text-center">
+            <td width="140px" class="text-center">
+              <button type="button" class="btn btn-primary btn-xs" ng-click="edit(ref)">Editar</button>
             	<button type="button" class="btn btn-danger btn-xs" ng-click="remove(ref._id)">Excluir</button>
             </td>
           </tr>

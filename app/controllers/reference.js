@@ -20,12 +20,14 @@
 			$http.get(url).then(function(res){
 				$scope.references = res.data.data;
 			});
+			$scope._id = '';
 			$scope.ncm = '';
 			$scope.description = '';
 		};
 
 		$scope.save = function(){
 			$http.post(url, {
+				_id: $scope._id,
 				ncm: $scope.ncm,
 				description: $scope.description
 			}).then(function(){
@@ -37,6 +39,12 @@
 			$http.delete(url + '/' + id).then(function(){
 				findAll();
 			});
+		};
+
+		$scope.edit = function(ref){
+			$scope._id = ref._id;
+			$scope.ncm = ref.ncm;
+			$scope.description = ref.description;
 		};
 
 		$scope.isValid = function(){
