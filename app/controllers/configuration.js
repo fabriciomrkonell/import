@@ -16,6 +16,7 @@
 
 		$http.get(url).then(function(res){
 			angular.extend($scope.data, res.data.data);
+			$scope.data.addLastLine = $scope.data.addLastLine.toString();
 		});
 
 		$scope.save = function(data){

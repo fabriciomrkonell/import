@@ -34,7 +34,7 @@ router.delete('/:id', function(req, res, next) {
     if(err){
       res.send({ error: 1, message: err.errors });
     }else{
-      res.send({ error: 0, message: 'Ecluido!' });
+      res.send({ error: 0, message: 'Excluído!' });
     }
   });
 });
