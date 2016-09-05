@@ -10,6 +10,7 @@ var User = new Schema({
   password: String,
   isAdmin: Boolean,
   configuration: {
+  	addLastLine: { type: Boolean, default: true },
 		start: { type: Number, default: 1 },
 		number: { type: Number, default: 0 },
 		description: { type: Number, default: 0 },

@@ -57,6 +57,15 @@
         <br/ class="hidden-xs">
         <br/ class="hidden-xs">
         <div class="form-group">
+          <label class="control-label">Incluir última linha: &nbsp;</label>
+          <select class="form-control" ng-model="data.addLastLine">
+            <option value="true" selected>Sim</option>
+            <option value="false">Não</option>
+          </select>
+        </div>
+        <br/ class="hidden-xs">
+        <br/ class="hidden-xs">
+        <div class="form-group">
           <button type="button" class="btn btn-success" ng-click="save(data)">Salvar</button>
         </div>
       </form>
