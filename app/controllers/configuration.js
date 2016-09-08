@@ -8,13 +8,16 @@
 
 	function configurationCtrl($scope, $http, $rootScope) {
 
-		const url = '/configuration';
+		var userConfoguration = document.getElementById('userConfiguration');
+
+		const url = (userConfoguration.value === '') ? '/configuration' : '/configuration/' + userConfoguration.value;
 
 		$scope.data = {
 			addLastLine: true
 		};
 
 		$http.get(url).then(function(res){
+			if(res.data.error === 1) return window.location = '/';
 			angular.extend($scope.data, res.data.data);
 			$scope.data.addLastLine = $scope.data.addLastLine.toString();
 		});

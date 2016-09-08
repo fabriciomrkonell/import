@@ -8,7 +8,7 @@ var User = new Schema({
 	name: String,
  	username: String,
   password: String,
-  isAdmin: Boolean,
+  isAdmin: { type: Boolean, default: false },
   configuration: {
   	addLastLine: { type: Boolean, default: true },
 		start: { type: Number, default: 1 },
